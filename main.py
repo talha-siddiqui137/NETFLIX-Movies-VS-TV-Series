@@ -1,3 +1,4 @@
+
 # step 1
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -23,3 +24,7 @@ plt.grid(color='gray', linewidth= 1, linestyle =':', axis='y')
 plt.tight_layout()
 # plt.savefig('movies VS TV show.pdf')
 plt.show()
+
+# step 4
+rating_counts = df['Rating'].value_counts()
+print(rating_counts)
