@@ -25,6 +25,14 @@ plt.tight_layout()
 # plt.savefig('movies VS TV show.pdf')
 plt.show()
 
-# step 4
+
+## pie
 rating_counts = df['Rating'].value_counts()
-print(rating_counts)
+plt.figure(figsize=(8,4))
+plt.pie(rating_counts.values,labels=rating_counts.index, autopct='%1.1f%%')
+
+plt.title('percentage of content rating')
+
+plt.tight_layout()
+# plt.savefig('content_rating_pie.pdf')
+plt.show()
