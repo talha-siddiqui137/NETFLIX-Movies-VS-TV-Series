@@ -36,3 +36,20 @@ plt.title('percentage of content rating')
 plt.tight_layout()
 # plt.savefig('content_rating_pie.pdf')
 plt.show()
+
+
+## movies duration histogram 
+
+movie_df = df[df['Category'] == 'Movie'].copy()
+movie_df['duration_int'] = movie_df['Duration'].str.replace(' min','').astype(int)
+
+plt.figure(figsize=(8,4))
+plt.hist(movie_df['duration_int'].values, bins = 30 ,color= 'purple', edgecolor= 'black')
+plt.title('distribution movie duration')
+plt.xlabel('duration (minutes)')
+plt.ylabel('No. of movies')
+plt.grid(color='gray', linewidth= 1, linestyle =':', axis='y')
+
+plt.tight_layout()
+# plt.savefig('movie_duration_histogram.pdf')
+plt.show()
