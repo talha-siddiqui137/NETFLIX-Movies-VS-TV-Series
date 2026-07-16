@@ -32,3 +32,31 @@ Netflix Movies and TV Shows dataset containing information about:
 - Netflix content increased significantly after 2015.
 
 ## Project Structure
+NETFLIX-Movies-VS-TV-Series/
+│
+├── Netflix_Dataset.csv
+├── main.py
+├── README.md
+├── requirements.txt
+│
+└── graphs/
+├── content_rating.pdf
+├── movie_duration_histogram.pdf
+├── movie_tvshow_comparison.pdf
+├── movies_vs_tv_show.pdf
+├── release_year_scatter.pdf
+└── top_10_countries_barh.pdf
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/talha-siddiqui137/NETFLIX-Movies-VS-TV-Series.git
+
+
+## Author
+
+**Talha Siddiqui**
+
+Software Engineering Student | Data Science & AI Enthusiast
