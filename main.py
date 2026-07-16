@@ -26,7 +26,7 @@ plt.tight_layout()
 plt.show()
 
 
-## pie
+## barh
 rating_counts = df['Rating'].value_counts()
 plt.figure(figsize=(8,4))
 plt.barh(rating_counts.index, rating_counts.values)
