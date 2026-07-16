@@ -29,7 +29,7 @@ plt.show()
 ## pie
 rating_counts = df['Rating'].value_counts()
 plt.figure(figsize=(8,4))
-plt.pie(rating_counts.values,labels=rating_counts.index, autopct='%1.1f%%')
+plt.barh(rating_counts.index, rating_counts.values)
 
 plt.title('percentage of content rating')
 
@@ -52,4 +52,68 @@ plt.grid(color='gray', linewidth= 1, linestyle =':', axis='y')
 
 plt.tight_layout()
 # plt.savefig('movie_duration_histogram.pdf')
+plt.show()
+
+
+
+##release year vs shows 
+
+df['Release_Date'] = df['Release_Date'].str.strip()
+df['Release_Date'] = pd.to_datetime(df['Release_Date'])
+df['Release_Year'] = df['Release_Date'].dt.year
+release_counts = df['Release_Year'].value_counts().sort_index()
+plt.figure(figsize=(8,4))
+plt.scatter(release_counts.index, release_counts.values, color= 'purple')
+plt.title('relase year vS no. of shows')
+plt.xlabel('release date')
+plt.ylabel('no. of shows')
+plt.grid(color='gray', linewidth= 1, linestyle =':')
+
+plt.tight_layout()
+# plt.savefig('release_years_scatter.pdf')
+plt.show()
+
+
+
+##  country  count 
+
+
+country_counts = df['Country'].value_counts().head(10)
+plt.figure(figsize=(8,6))
+plt.barh(country_counts.index, country_counts.values, color= 'teal')
+plt.title('top 10 country by no. of shows')
+plt.xlabel('no. of shows')
+plt.ylabel('country name')
+plt.grid(color='gray', linewidth= 1, linestyle =':', axis='x')
+
+plt.tight_layout()
+# plt.savefig('top_10_countrie_barh.pdf')
+plt.show()
+
+
+
+
+content_by_year = df.groupby(['Release_Year', 'Category']).size().unstack().fillna(0)
+
+fig, ax = plt.subplots(1,2, figsize = (12,5))
+
+# first subplot for movie
+ax[0].plot(content_by_year.index,content_by_year['Movie'], color = 'blue')
+ax[0].set_title('movies released per year')
+ax[0].set_xlabel('year')
+ax[0].set_ylabel('no. of movies')
+ax[0].grid(color = 'gray', linestyle = ':', linewidth = 1)
+
+
+# second subplot for movie
+ax[1].plot(content_by_year.index,content_by_year['TV Show'], color = 'blue')
+ax[1].set_title('TV Show released per year')
+ax[1].set_xlabel('year')
+ax[1].set_ylabel('no. of TV Show')
+ax[1].grid(color = 'gray', linestyle = ':', linewidth = 1)
+
+fig.suptitle('comparision of movies and Tv shows per year')
+
+plt.tight_layout()
+# plt.savefig('movie_tvshow_comparision.pdf')
 plt.show()
